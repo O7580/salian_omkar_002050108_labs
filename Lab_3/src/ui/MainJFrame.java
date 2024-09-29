@@ -148,10 +148,10 @@ public class MainJFrame extends javax.swing.JFrame {
         newAccount.setBalance(300);
         
         Account addnewAccount = accountDirectory.addAccount();
-        newAccount.setAccountNumber("87654321");
-        newAccount.setRoutingNumber("87654678");
-        newAccount.setBankName("Santander");
-        newAccount.setBalance(150);
+        addnewAccount.setAccountNumber("87654321");
+        addnewAccount.setRoutingNumber("87654678");
+        addnewAccount.setBankName("Santander");
+        addnewAccount.setBalance(150);
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

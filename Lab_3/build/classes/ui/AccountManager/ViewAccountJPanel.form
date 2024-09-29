@@ -25,11 +25,11 @@
                           <Component id="lblAccountNumber" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBankName" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtAccountNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRoutingNumber" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtBankName" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBankName" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="txtAccountNumber" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="txtRoutingNumber" min="-2" pref="116" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -87,6 +87,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;--Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblViewAccount">
       <Properties>
@@ -121,11 +124,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

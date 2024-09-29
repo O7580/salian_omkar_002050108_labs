@@ -4,6 +4,7 @@
  */
 package ui.AccountManager;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Account;
 import model.AccountDirectory;
@@ -24,6 +25,9 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         initComponents();
         this.useProcessContainer = userProcessContainer;
         this.account = account;
+        
+        refreshTextFields();
+        setViewMode();
         
     }
 
@@ -48,6 +52,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         btnUpdate = new javax.swing.JButton();
 
         btnBack.setText("<--Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblViewAccount.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lblViewAccount.setText("View Account");
@@ -59,8 +68,18 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         lblBankName.setText("Bank Name");
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,11 +93,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
                             .addComponent(lblRoutingNumber, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAccountNumber)
                             .addComponent(lblBankName))
-                        .addGap(169, 169, 169)
+                        .addGap(117, 117, 117)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +137,56 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        setEditmode();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+            String routingNumber = txtRoutingNumber.getText();
+            String accountNumber = txtAccountNumber.getText();
+            String bankName = txtBankName.getText();
+            
+            if (routingNumber.isBlank() || bankName.isBlank() || accountNumber.isBlank())
+            {
+                JOptionPane.showMessageDialog(this, "All fields are mandatory.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            account.setRoutingNumber(routingNumber);
+            account.setAccountNumber(accountNumber);
+            account.setBankName(bankName);
+            
+             JOptionPane.showMessageDialog(null, "Account updated successfully", "Warning", JOptionPane.WARNING_MESSAGE);
+                setViewMode();
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void setViewMode(){
+        txtRoutingNumber.setEnabled(false);
+        txtAccountNumber.setEnabled(false);
+        txtBankName.setEnabled(false);
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+    }
+    
+    private void refreshTextFields(){
+    txtRoutingNumber.setText( account.getRoutingNumber());
+    txtAccountNumber.setText( account.getAccountNumber());
+    txtBankName.setText( account.getBankName());
+    
+    }
+    
+    private void setEditmode(){
+    txtRoutingNumber.setEnabled(true);
+    txtAccountNumber.setEnabled(true);
+    txtBankName.setEnabled(true);
+    btnSave.setEnabled(true);
+    btnUpdate.setEnabled(false);
+    
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
