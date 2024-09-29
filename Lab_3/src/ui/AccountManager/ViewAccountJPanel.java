@@ -4,6 +4,7 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Account;
@@ -14,7 +15,7 @@ import model.AccountDirectory;
  * @author omkarsalian
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
-    private JPanel useProcessContainer;
+    private JPanel userProcessContainer;
     private AccountDirectory accountDirectory;
     private Account account;
 
@@ -23,7 +24,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
      */
     public ViewAccountJPanel(JPanel userProcessContainer, AccountDirectory directory, Account account) {
         initComponents();
-        this.useProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.account = account;
         
         refreshTextFields();
@@ -161,7 +162,9 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+            userProcessContainer.remove(this);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);        // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void setViewMode(){

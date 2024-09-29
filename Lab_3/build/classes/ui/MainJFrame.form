@@ -79,7 +79,7 @@
             <Component class="javax.swing.JButton" name="btnAccountMng">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="cc" red="99" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Open Account Managemnet Work Area"/>
               </Properties>

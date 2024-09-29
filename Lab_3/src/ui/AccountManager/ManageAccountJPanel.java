@@ -190,7 +190,23 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        if(!txtSearch.getText().isBlank()){
         
+            String accountNumber = txtSearch.getText();
+            Account foundAccount = accountDirectory.searchAccount(accountNumber);
+            
+            if(foundAccount != null) {
+            ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, accountDirectory, foundAccount);
+            userProcessContainer.add("ViewAccountJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            }
+            else{
+            JOptionPane.showMessageDialog( null, "Account not found. Please check the account number and try again", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+        JOptionPane.showMessageDialog( null, "Please type the account number to view", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
     
     public void populateTable(){

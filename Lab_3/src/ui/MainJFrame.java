@@ -45,7 +45,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnAccountMng.setBackground(new java.awt.Color(204, 204, 204));
+        btnAccountMng.setBackground(new java.awt.Color(153, 204, 255));
         btnAccountMng.setText("Open Account Managemnet Work Area");
         btnAccountMng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
