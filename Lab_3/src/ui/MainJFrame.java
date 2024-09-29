@@ -45,7 +45,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        btnAccountMng.setBackground(new java.awt.Color(204, 255, 255));
+        btnAccountMng.setBackground(new java.awt.Color(204, 204, 204));
         btnAccountMng.setText("Open Account Managemnet Work Area");
         btnAccountMng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +97,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnAccountMngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountMngActionPerformed
         
-        AccountMngWorkAreaJPanel panel = new AccountMngWorkAreaJPanel();
+        AccountMngWorkAreaJPanel panel = new AccountMngWorkAreaJPanel(userProcessContainer, accountDirectory);
         userProcessContainer.add("AccountMngWorkAreaJPanel", panel);
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
