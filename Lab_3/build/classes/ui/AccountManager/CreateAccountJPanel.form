@@ -34,10 +34,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAccountNumber" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="txtRountingNumber" min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="btnBankName" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="btnBalance" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="txtAccountNumber" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="txtRoutingNumber" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="txtBankName" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="txtBalance" min="-2" pref="109" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -60,22 +60,22 @@
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRountingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnBankName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBankName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblBankName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblBalance" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="btnBalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBalance" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="btnCreateAccount" min="-2" pref="37" max="-2" attributes="0"/>
@@ -92,6 +92,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;--Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCreateAccount">
       <Properties>
@@ -121,21 +124,27 @@
         <Property name="text" type="java.lang.String" value="Balance"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtRountingNumber">
-    </Component>
-    <Component class="javax.swing.JTextField" name="btnAccountNumber">
-    </Component>
-    <Component class="javax.swing.JTextField" name="btnBankName">
+    <Component class="javax.swing.JTextField" name="txtRoutingNumber">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBankNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRoutingNumberActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="btnBalance">
+    <Component class="javax.swing.JTextField" name="txtAccountNumber">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBankName">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBankNameActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBalance">
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateAccount">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create Account"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateAccountActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

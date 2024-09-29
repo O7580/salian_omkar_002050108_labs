@@ -4,7 +4,11 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Account;
 import model.AccountDirectory;
 
 /**
@@ -13,7 +17,7 @@ import model.AccountDirectory;
  */
 public class ManageAccountJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
-    AccountDirectory accountdirectory;
+    AccountDirectory accountDirectory;
 
     /**
      * Creates new form ManageAccountJPanel
@@ -21,7 +25,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     public ManageAccountJPanel(JPanel container, AccountDirectory directory) {
         initComponents();
         userProcessContainer = container;
-        accountdirectory = directory;
+        accountDirectory = directory;
     }
 
     /**
@@ -36,18 +40,23 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAccounts = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
         btnViewDetails = new javax.swing.JButton();
         btnDeleteAccount = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
 
         btnBack.setText("<--Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel1.setText("Manage Account");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAccounts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,13 +72,23 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAccounts);
 
         btnSearch.setText("Search");
 
         btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         btnDeleteAccount.setText("Delete Account");
+        btnDeleteAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,6 +135,58 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+            userProcessContainer.remove(this);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.previous(userProcessContainer);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnDeleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAccountActionPerformed
+        int selectedRow = tblAccounts.getSelectedRow();
+        if (selectedRow >= 0) {
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this account?","Warning",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            Account  selectedAccount = (Account) tblAccounts.getValueAt(selectedRow, 0);
+            accountDirectory.deleteAccount(selectedAccount);
+            populateTable();
+        }
+        
+        }
+    }//GEN-LAST:event_btnDeleteAccountActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+            int selectedRow = tblAccounts.getSelectedRow();
+            
+            if(selectedRow >= 0){
+            Account  selectedAccount = (Account) tblAccounts.getValueAt(selectedRow, 0);
+            ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, accountDirectory, selectedAccount);
+            userProcessContainer.add("ViewAccountJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            
+            }else{
+            JOptionPane.showMessageDialog( null, "Please select an account from list to view", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+            
+            }// TODO add your handling code here:
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+    
+    public void populateTable(){
+    
+        DefaultTableModel model = (DefaultTableModel) tblAccounts.getModel();
+        model.setRowCount(0);
+        
+        for (Account a : accountDirectory.getAccounts()){
+        Object[] row = new Object[4];
+        row[0] = a;
+        row[1] = a.getRoutingNumber();
+        row[2] = a.getAccountNumber();
+        row[3] = String.valueOf(a.getBalance());
+        
+        model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -124,7 +195,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnViewDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblAccounts;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
