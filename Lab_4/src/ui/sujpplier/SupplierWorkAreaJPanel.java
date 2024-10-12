@@ -203,7 +203,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         //        layout.next(userProcessContainer);
     }//GEN-LAST:event_PerformanceActionPerformed
         public String toStringg(){
-        return supplier;
+        return "Supplier";
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
