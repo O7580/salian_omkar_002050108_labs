@@ -1,25 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author chava
  */
 public class Product {
-            private String name;
+    private String name;
     private int price;
     private int id;
+    private List<Feature> features; // List to store product features
 
     private static int count = 0;
-    
+
     public Product() {
         count++;
         id = count;
-        
+        features = new ArrayList<>(); // Initialize the list of features
     }
 
     public String getName() {
@@ -33,8 +32,7 @@ public class Product {
     public int getId() {
         return id;
     }
-    
-    
+
     public int getPrice() {
         return price;
     }
@@ -43,10 +41,20 @@ public class Product {
         this.price = price;
     }
 
-    
+    // Getter for the list of features
+    public List<Feature> getFeatures() {
+        return features;
+    }
+
+    // Method to add a new feature
+    public Feature addNewFeature() {
+        Feature newFeature = new Feature(this);
+        features.add(newFeature);
+        return newFeature;
+    }
+
     @Override
     public String toString() {
         return name;
     }
-    
 }

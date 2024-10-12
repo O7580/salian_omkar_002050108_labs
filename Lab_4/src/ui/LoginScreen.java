@@ -10,7 +10,6 @@ import model.Supplier;
 import model.SupplierDirectory;
 import ui.admin.AdminWorkAreaJPanel;
 import ui.sujpplier.SupplierWorkAreaJPanel;
-import ui.supplier.SupplierWorkAreaJPanel;
 /**
  *
  * @author chava
@@ -136,7 +135,7 @@ public class LoginScreen extends javax.swing.JPanel {
 
     private void cmbSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSuppliersActionPerformed
         // TODO add your handling code here:
-        if (cmbsuppliers.getSelectedItem() == null)return;
+        if (cmbSuppliers.getSelectedItem() == null)return;
         selectedSupplier = (Supplier) cmbSuppliers.getSelectedItem();
 
     }//GEN-LAST:event_cmbSuppliersActionPerformed
@@ -161,7 +160,7 @@ public class LoginScreen extends javax.swing.JPanel {
         AdminWorkAreaJPanel adminpanel = new AdminWorkAreaJPanel (mainWorkArea,supplierDirectory);
         SupplierWorkAreaJPanel supplierpanel = new SupplierWorkAreaJPanel(mainWorkArea,selectedSupplier);
         
-        cmbRoles.addItem(adminPanel);
+        cmbRoles.addItem(adminpanel);
         cmbRoles.addItem(supplierpanel);
       
 
