@@ -3,15 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author chava
- */
+
 public class Product {
     private String name;
     private int price;
     private int id;
-    private List<Feature> features; // List to store product features
+    private ArrayList<Feature> features; // List to store product features
 
     private static int count = 0;
 

@@ -5,10 +5,7 @@
 package model;
 import java.util.ArrayList;
 
-/**
- *
- * @author chava
- */
+
 public class SupplierDirectory {
     private ArrayList<Supplier> supplierList;
     

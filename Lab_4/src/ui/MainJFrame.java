@@ -6,10 +6,7 @@ package ui;
 import java.awt.CardLayout;
 import model.Supplier;
 import model.SupplierDirectory;
-/**
- *
- * @author chava
- */
+
 public class MainJFrame extends javax.swing.JFrame {
 
         SupplierDirectory supplierDirectory;
@@ -23,7 +20,7 @@ public class MainJFrame extends javax.swing.JFrame {
         setSize(800,600);
         setResizable(false);
        
-        
+        populateDemoData();
         setLoginScreen();
     }
 
@@ -105,6 +102,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private void populateDemoData(){
      Supplier bestbuy= supplierDirectory.addSupplier();
      bestbuy.setSupplyName("Best Buy");
+     
+     Supplier mustbuy= supplierDirectory.addSupplier();
+     mustbuy.setSupplyName("Must Buy");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainWorkArea;

@@ -10,10 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-/**
- *
- * @author chava
- */
+
 public class CreateNewProductJPanel extends javax.swing.JPanel {
 Supplier supplier;
     JPanel workArea;

@@ -8,10 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
 import ui.LoginScreen;
-/**
- *
- * @author chava
- */
+
 public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
          JPanel mainWorkArea;
@@ -202,7 +199,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         //        CardLayout layout = (CardLayout)workArea.getLayout();
         //        layout.next(userProcessContainer);
     }//GEN-LAST:event_PerformanceActionPerformed
-        public String toStringg(){
+        public String toString(){
         return "Supplier";
         }
 

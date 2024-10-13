@@ -7,10 +7,7 @@ import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-/**
- *
- * @author chava
- */
+
 public class SearchForProductJPanel extends javax.swing.JPanel {
      JPanel workArea;
      Supplier supplier;

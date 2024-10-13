@@ -10,10 +10,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author chava
- */
+
 public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
             JPanel workArea;

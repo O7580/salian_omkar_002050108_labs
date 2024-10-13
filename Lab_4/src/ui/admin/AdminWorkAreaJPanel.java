@@ -8,10 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
 import ui.LoginScreen;
-/**
- *
- * @author chava
- */
+
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         JPanel mainWorkArea;
         SupplierDirectory supplierDirectory;

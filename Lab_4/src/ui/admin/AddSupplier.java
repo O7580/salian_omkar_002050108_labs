@@ -20,10 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-/**
- *
- * @author chava
- */
+
 public class AddSupplier extends javax.swing.JPanel {
     private JPanel workArea;
     private SupplierDirectory supplierDirectory;

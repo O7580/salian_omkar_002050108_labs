@@ -10,10 +10,7 @@ import model.Supplier;
 import model.SupplierDirectory;
 import ui.admin.AdminWorkAreaJPanel;
 import ui.sujpplier.SupplierWorkAreaJPanel;
-/**
- *
- * @author chava
- */
+
 public class LoginScreen extends javax.swing.JPanel {
         JPanel mainWorkArea;
         SupplierDirectory supplierDirectory;
@@ -177,16 +174,16 @@ public class LoginScreen extends javax.swing.JPanel {
     }
 
     private void updateSupplierVisibility() {
-        if((cmbRoles.getSelectedItem() == null) || (cmbRoles.getSelectedItem().getClass() == AdminWorkAreaJPanel.class)) {
-        selectedSupplier = null;
-        lblSupplier.setVisible(false);
-        cmbSuppliers.setVisible(false);
-        return;
+        if ((cmbRoles.getSelectedItem() == null) || (cmbRoles.getSelectedItem().getClass() == AdminWorkAreaJPanel.class)) {
+            selectedSupplier = null;
+            lblSupplier.setVisible(false);
+            cmbSuppliers.setVisible(false);
+            return;
         }
-        
-        if(cmbRoles.getSelectedItem().getClass() == SupplierWorkAreaJPanel.class){
-        lblSupplier.setVisible(true);
-        cmbSuppliers.setVisible(true);
+
+        if (cmbRoles.getSelectedItem().getClass() == SupplierWorkAreaJPanel.class) {
+            lblSupplier.setVisible(true);
+            cmbSuppliers.setVisible(true);
         }
         
          //To change body of generated methods, choose Tools | Templates.

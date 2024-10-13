@@ -11,10 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Feature;
-/**
- *
- * @author chava
- */
+
 public class ViewProductDetailJPanel extends javax.swing.JPanel {
     JPanel workArea;
     Product product;

@@ -4,10 +4,7 @@
  */
 package model;
 import java.util.ArrayList;
-/**
- *
- * @author chava
- */
+
 public class ProductCatalog {
     private ArrayList<Product> productCatalog;
     

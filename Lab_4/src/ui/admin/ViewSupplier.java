@@ -9,10 +9,7 @@ import model.Supplier;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author chava
- */
+
 public class ViewSupplier extends javax.swing.JPanel {
     
     JPanel workArea;

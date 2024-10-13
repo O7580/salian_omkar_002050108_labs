@@ -4,14 +4,15 @@
  */
 package model;
 
-/**
- *
- * @author chava
- */
+
 public class Feature {
     private Product owner;
     private String name;
     private Object value;
+    
+    public Feature(){
+    
+    }
     
     public Feature(Product owner){
             this.owner = owner;
@@ -20,6 +21,7 @@ public class Feature {
     public Feature(Product owner, String name, Object value){
             this.name = name;
             this.value = value;
+            this.owner = owner;
     }
 
     public Product getOwner() {

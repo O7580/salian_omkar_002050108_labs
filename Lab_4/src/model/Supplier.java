@@ -4,10 +4,7 @@
  */
 package model;
 import javax.swing.ImageIcon;
-/**
- *
- * @author chava
- */
+
 public class Supplier {
     private String supplyName;
     private ProductCatalog productCatalog;
