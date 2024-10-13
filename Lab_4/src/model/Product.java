@@ -2,12 +2,22 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 
 public class Product {
     private String name;
     private int price;
     private int id;
+     private ImageIcon logoImage;
+
+    public ImageIcon getLogoImage() {
+        return logoImage;
+    }
+
+    public void setLogoImage(ImageIcon logoImage) {
+        this.logoImage = logoImage;
+    }
     private ArrayList<Feature> features; // List to store product features
 
     private static int count = 0;

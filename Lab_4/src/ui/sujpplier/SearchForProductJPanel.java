@@ -6,6 +6,7 @@ package ui.sujpplier;
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SearchForProductJPanel extends javax.swing.JPanel {
@@ -113,8 +114,26 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
+       if (!idField.getText().isBlank()) {
+        try {
+            int searchId = Integer.parseInt(idField.getText());
+            Product foundProduct = supplier.getProductCatalog().searchProduct(searchId);
 
+            if (foundProduct != null) {
+                ViewProductDetailJPanel panel = new ViewProductDetailJPanel(workArea, foundProduct);
+                workArea.add("ViewProductDetailJPanel", panel);
+                CardLayout layout = (CardLayout) workArea.getLayout();
+                layout.next(workArea);
+            } else {
+                JOptionPane.showMessageDialog(null, "Product not found. Please check the input and try again.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            idField.setText("");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid Product ID (integer).", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Please type the Product ID.", "Warning", JOptionPane.WARNING_MESSAGE);
+    }   
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
