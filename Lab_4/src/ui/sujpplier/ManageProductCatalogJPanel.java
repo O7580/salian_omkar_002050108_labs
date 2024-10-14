@@ -62,6 +62,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         imgLogo = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -108,7 +109,11 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             }
         });
 
-        imgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgLogo.setText("<No Image>");
+        imgLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        imgLogo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        lblLogo.setText("Logo:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,9 +133,11 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                         .addComponent(btnDelete))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLogo))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +145,11 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addComponent(lblLogo)
+                        .addGap(43, 43, 43)
                         .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -182,7 +190,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
          return;
          }
          Product selectProduct = (Product) tblProducts.getValueAt(row, 0);
-         ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, selectProduct);
+         ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, selectProduct,supplier);
          workArea.add("ViewProductDetailJPanelSupplier",vpdjp);
          CardLayout layout = (CardLayout) workArea.getLayout();
          layout.next(workArea);
@@ -227,6 +235,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel imgLogo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblProducts;
     // End of variables declaration//GEN-END:variables
