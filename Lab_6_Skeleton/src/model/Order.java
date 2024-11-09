@@ -4,10 +4,32 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author omkarsalian
  */
 public class Order {
-    
+
+    ArrayList<OrderItem> orderItemList;
+
+    public Order() {
+        this.orderItemList = new ArrayList<OrderItem>();
+    }
+
+    public ArrayList<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(ArrayList<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
+    }
+
+    public OrderItem addNewOrderItem(Product product, double price, int quantity) {
+        OrderItem orderItem = new OrderItem(product, price, quantity);
+        orderItemList.add(orderItem);
+        return orderItem;
+    }
+
 }

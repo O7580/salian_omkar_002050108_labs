@@ -12,10 +12,35 @@ package model;
 public class Product {
 
     private String prodName;
-    private int price;
+    private double price;
     private int modelNumber;
+    private int avail;
 
     private static int count = 0;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getAvail() {
+        return avail;
+    }
+
+    public void setAvail(int avail) {
+        this.avail = avail;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Product.count = count;
+    }
 
     @Override
     public String toString() {
@@ -33,14 +58,6 @@ public class Product {
 
     public void setProdName(String prodName) {
         this.prodName = prodName;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getModelNumber() {
