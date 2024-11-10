@@ -9,7 +9,7 @@ package model;
  * @author omkarsalian
  */
 public class OrderItem {
-    
+
     Product product;
     double salesPrice;
     int quantity;
@@ -43,6 +43,10 @@ public class OrderItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return this.product.toString();
+    }
+
 }

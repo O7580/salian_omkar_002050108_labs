@@ -391,6 +391,18 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
     private void btnViewOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderItemActionPerformed
 
+        int selectedRowIndex = tblCart.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select the item first.");
+            return;
+        }
+
+        OrderItem item = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+        ViewOrderItemDetailJPanel voidp = new ViewOrderItemDetailJPanel(userProcessContainer, item);
+        userProcessContainer.add("ViewOrderItemDetailJPanel", voidp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnViewOrderItemActionPerformed
 
     private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
