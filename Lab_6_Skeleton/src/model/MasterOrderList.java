@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * @author omkarsalian
  */
 public class MasterOrderList {
-    
+
     ArrayList<Order> orderList;
-    
-    public MasterOrderList(){
+
+    public MasterOrderList() {
         orderList = new ArrayList<Order>();
     }
 
@@ -25,5 +25,8 @@ public class MasterOrderList {
     public void setOrderList(ArrayList<Order> orderList) {
         this.orderList = orderList;
     }
-    
+
+    public void addNewOrder(Order order) {
+        this.orderList.add(order);
+    }
 }
