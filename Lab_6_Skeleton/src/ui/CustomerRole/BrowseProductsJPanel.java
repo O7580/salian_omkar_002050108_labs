@@ -37,11 +37,11 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.supplierDirectory = supplierDirectory;
         this.masterOrderList = masterOrderList;
-        String productName = null;
-        
-        currentOrder = new Order();
+        this.currentOrder = new Order();
+
         populateCombo();
-        populateProductTable(productName);
+        populateProductTable();
+        populateCartTable();
     }
 
     /**
@@ -338,7 +338,32 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
     private void btnModifyQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyQuantityActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblCart.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showConfirmDialog(this, "Please select the order item first.");
+            return;
+        }
+        OrderItem item = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+        int quant = 0;
+        try {
 
+            quant = Integer.parseInt(txtNewQuantity.getText());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Please check the modified quantity field.");
+            return;
+        }
+        int oldQuant = item.getQuantity();
+        if (item.getProduct().getAvail() + oldQuant < quant) {
+            JOptionPane.showMessageDialog(this, "Please check the product availability.");
+            return;
+        }
+
+        item.getProduct().setAvail(item.getProduct().getAvail() + oldQuant - quant);
+        item.setQuantity(quant);
+
+        populateCartTable();
+        populateProductTable();
     }//GEN-LAST:event_btnModifyQuantityActionPerformed
 
     private void btnSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchProductActionPerformed
@@ -349,6 +374,19 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
     private void btnRemoveOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveOrderItemActionPerformed
 
+        int selectedRowIndex = tblCart.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showConfirmDialog(this, "Please select the order item first.");
+            return;
+        }
+        OrderItem item = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+        int quant = 0;
+
+        item.getProduct().setAvail(item.getProduct().getAvail() + item.getQuantity());
+        currentOrder.deleteItem(item);
+
+        populateCartTable();
+        populateProductTable();
     }//GEN-LAST:event_btnRemoveOrderItemActionPerformed
 
     private void btnViewOrderItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderItemActionPerformed
@@ -359,55 +397,57 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         int selectedRowIndex = tblProductCatalog.getSelectedRow();
-        if (selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showConfirmDialog(this, "Please select the product first.");
             return;
         }
-        
+
         Product product = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
         double salesPrice = 0;
         int quant = 0;
-        
-        try{
-            
+
+        try {
+
             salesPrice = Double.parseDouble(txtSalesPrice.getText());
             quant = (Integer) spnQuantity.getValue();
-            
-        } catch (Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please check the price and quantity fields.");
             return;
         }
-        
-        if (salesPrice < product.getPrice()){
+
+        if (salesPrice < product.getPrice()) {
             JOptionPane.showMessageDialog(this, "Price should be more than it is set in the price.");
             return;
         }
-        
+
         OrderItem item = currentOrder.findProduct(product);
-        
+
         if (item == null) {
-            
-            if (product.getAvail() >= quant){
-                
+
+            if (product.getAvail() >= quant) {
+
                 currentOrder.addNewOrderItem(product, salesPrice, quant);
                 product.setAvail(product.getAvail() - quant);
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Please check the product availability.");
                 return;
             }
-        } else{
-            
+        } else {
+
             int oldQuant = item.getQuantity();
-            if (item.getProduct().getAvail() + oldQuant < quant){
+            if (item.getProduct().getAvail() + oldQuant < quant) {
                 JOptionPane.showMessageDialog(this, "Please check the product availability.");
                 return;
             }
-            
+
             item.getProduct().setAvail(item.getProduct().getAvail() + oldQuant - quant);
             item.setQuantity(quant);
-            
+
         }
+        populateProductTable();
+        populateCartTable();
 
 
     }//GEN-LAST:event_btnAddToCartActionPerformed
@@ -461,6 +501,21 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
             row[1] = p.getModelNumber();
             row[2] = p.getPrice();
             row[3] = p.getAvail();
+            model.addRow(row);
+        }
+    }
+
+    private void populateCartTable() {
+
+        DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+        model.setRowCount(0);
+
+        for (OrderItem oi : currentOrder.getOrderItemList()) {
+            Object row[] = new Object[4];
+            row[0] = oi;
+            row[1] = oi.getSalesPrice();
+            row[2] = oi.getQuantity();
+            row[3] = oi.getQuantity() * oi.getSalesPrice();
             model.addRow(row);
         }
     }
